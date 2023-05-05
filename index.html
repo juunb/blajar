@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <input type="text" id="nama">
+        </div>
+        <button class="btn" onclick="tampilkan()">tampilkan</button>
+
+    </div>
+
+    <script>
+
+    function tampilkan(){
+    fetch("mydata.json")
+         .then(res=>res.json())
+         .then(data =>{
+            data.forEach(e => {
+                //console.log(e.nama)
+                createl(e.nama)
+            });
+         })
+        }
+    function createl(x){
+        console.log(x)
+        const para = document.createElement("p");
+        para.innerText=x
+        const element=document.querySelector(".container")
+        element.appendChild(para)
+    }
+    </script>
+</body>
+</html>
