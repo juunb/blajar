@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            
+            font-size: 1.5em;
+        }
+        .kontainer{
+            height:550px;
+            width: min(900px,100vw);
+            
+            margin-inline: auto;
+            padding: 20px;
+        }
+        .content{
+            width: 350px;
+            margin-inline: auto;
+            margin-top: 100px;
+        }
+        .kiri{
+            padding: 20px;
+        }
+        .row{
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }       
+        input{
+            padding: 10px 15px 10px;
+        }
+        button{
+            padding: 10px;
+            background: none;
+            background-color: #61b634;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        
+        
+    </style>
+</head>
+<body>   
+    <div class="kontainer">
+        <div class="page page2">
+        <div class="content">
+            <div class="kiri">
+                <form action="result.html" id="logform">
+                    <div class="row"><h1>Welcome!</h1></div>
+                    <div class="row">
+                        <label for="user">Username</label>
+                        <input type="text" id="user" name="user" placeholder="Username">
+                    </div>
+                    <div class="row">
+                        <label for="pwd">Password</label>
+                        <input type="password" name="pwd" id="pwd" placeholder="Password">
+                    </div>
+                    <div style="margin:15px 0;display:flex; align-items:center;font-size: 0.8rem;">
+                    <input type="checkbox" onclick="myFunction()">
+                    <label style="color:black; margin-left: 10px;">Show Password</label>
+                    </div>
+               
+                    <div class="row">                        
+                        <button id="login">Submit</button>
+                    </div>
+                    <div class="row">
+                        <p id="ket" style="color:red"></p>
+                    </div>
+                </form>
+            </div>
+            
+            
+        </div>
+          
+        </div>        
+   
+    </div>
+    </div>
+    <script>
+        const query=window.location.search.substring(1)
+        if(query=="salah"){
+            document.querySelector("#ket").textContent="user atau password yang anda masukkan salah"
+        }
+        
+    </script>
+
+
+    
+</body>
+</html>

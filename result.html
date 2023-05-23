@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .wraper{
+            display: flex;
+            flex-direction: column;
+            gap:2ch;
+            width: min(720px,90vw);
+            margin-inline: auto;
+        }
+        .wraper > div{            
+            padding: 2ch;
+        }
+
+        .poto{
+            width: 100px;
+            height: 130px;
+            border:1px solid gray;
+        }
+        .poto img{
+            width: 100%;
+        }
+        .bag-1{
+            background-color: #008000;
+            color: white;            
+        }
+        .bag-2{
+            border:1px solid gray;
+            box-shadow: 3px 3px 3px gray;
+        }
+        .bag-3{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border:1px solid gray;
+            box-shadow: 3px 3px 3px gray;
+        }
+        .bag-3>*{
+            margin: 1ch;
+        }
+      
+      
+      
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="bag-1">
+            <p>SMP Perguruan Rakyat 1</p>
+            <h1 style="font-size: clamp(0.5em,5vw,2em);">PENGUMUMAN KELULUSAN</h1>
+            <p>Tahun Pelajaran 2022-2023</p>
+        </div>
+        <div class="bag-2">
+            <h2>SURAT KETERANGAN</h2>
+            <p>Nomor: 180/SMP.PR1/E.22/VI/2023</p>
+            <p style="text-align: justify; margin-top: 1.5ch;line-height: 1.5;">Berdasarkan hasil rapat Dewan Guru tentang penetapan kelulusan peserta didik tahun pelajaran 2022/2023 SMP Perguruan Rakyat 1 yang dilaksanakan pada tanggal 15 April 2023 di SMP Perguruan Rakyat 1, maka dengan ini:</p>
+        </div>
+        <div class="bag-3">
+            <div>
+                <h2 id="nama" style="text-align: center;">NAMA PESERTA DIDIK</h2>
+                <h3 id="kelas" style="text-align: center;">(kelas IX-A)</h3>
+            </div>
+            <div class="poto">
+                <img src="https://rosecorporate.com.au/app/uploads/blank-photo.jpg" alt="">
+            </div>
+            <p>dinyatakan</p>
+            <h1 style="letter-spacing: 5px; border:3px solid green;box-shadow: 3px 3px 3px gray;padding:10px; width: max-content;">LULUS</h1>
+        </div>
+    </div>
+    <script>
+        const query=window.location.search.substring(1).split("&")
+        const user=query[0].split("=")[1]
+        const pwd=query[1].split("=")[1]
+        fetch("database.json")
+        .then(res=>res.json())
+        .then(data =>{
+            let hasil=data.filter(x =>x.user == user && x.pwd==pwd)
+            if(hasil.length > 0){
+                console.log("okey")
+                document.querySelector("#nama").textContent=hasil[0].nama
+                document.querySelector("#kelas").textContent=hasil[0].kelas
+                document.querySelector(".poto img").src=`https://drive.google.com/uc?export=view&id=${hasil[0].fileid}`
+                        
+            }else{
+                window.location.replace("login.html?salah");
+                //console.log(hasil[0].user,hasil[0].pwd)
+            }
+            
+        })
+    </script>
+</body>
+</html>
